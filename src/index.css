@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*utility class */
+
+
+img{
+ @apply w-full h-full object-cover
+}
+
+.default_padding{
+  @apply px-5
+}
+.centre{
+  @apply flex justify-center items-center
+}
+.jstart {
+  @apply flex justify-start items-center
+}
+.istart {
+  @apply flex justify-center items-start
+}
+.page {
+  @apply relative z-10
+}
+
+.full {
+  @apply w-full h-full
+  
+}
+
+.page{
+  @apply w-screen min-h-screen relative z-[10]
+  
+}
+
+.move{
+  @apply duration-700
+  
+}
+
+
+/* costume class */
+/*
+.navSvgboder{
+  @apply border border-black
+  
+  }
+*/
+
