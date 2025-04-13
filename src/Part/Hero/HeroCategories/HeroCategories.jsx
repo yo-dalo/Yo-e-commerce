@@ -11,13 +11,14 @@ const HeroCategories = () => {
       <div className="grid grid-cols-2 gap-3 gap-y-5 py-10">
       
       
-        
+                {
+        [12,4,6,55,7].map((element,index)=>(
+        <HeroCategoriesElement key={index} />
+        ))
+      }
         
       
-        <HeroCategoriesElement />
-        <HeroCategoriesElement />
-        <HeroCategoriesElement />
-        <HeroCategoriesElement />
+
       
       
         

@@ -7,27 +7,32 @@ import gsap from "gsap";
 import ManuItems from "./ManuItems";
 
 const SubMenu = forwardRef(({
-  className
+  className,onClick
 }, ref) => {
-  const SubMenuRef = useRef(null);
+  const subMenuRef = useRef(null);
+  
+   
+  
+  
+  
 
   useImperativeHandle(ref, () => ({
     openSubMenu: () => {
-      gsap.to(SubMenuRef.current, {
+      gsap.to(subMenuRef.current, {
         //opacity: 1, 
-        //x: 1, 
-        scale:1,
+        x: 1, 
+     //   scale:1,
         display: "flex", 
         duration: 0.5, 
         ease: "power4.inOut"
       });
     },
     closeSubMenu: () => {
-      gsap.to(SubMenuRef.current, {
+      gsap.to(subMenuRef.current, {
       //  opacity: 0, 
         display: "none",
-       // x: "100vw",
-        scale:0,
+        x: "100vw",
+     //   scale:0,
         duration: 0.5,
         ease: "power4.inOut"
       });
@@ -38,9 +43,14 @@ const SubMenu = forwardRef(({
     <>
      
     <div
-      ref={SubMenuRef} style={{display:"none",}}
-      className={`px-11 border-t-2 scale-0 relative z-[50] translate-x-[100vw]1  bg-white py-14 w-screen h-[calc(100vh-5rem)] flex flex-col gap-9 ${className}`}
+      ref={subMenuRef} onClick={onClick} style={{display:"none",}}
+      className={`px-11 full absolute top-0 left-0  border-t-2 scale-1
+      z-[60] translate-x-[100vw]  bg-white py-14 w-screen1
+      h-[calc(100vh-5rem)]1
+      flex flex-col gap-9 ${className}`}
       >
+      <h1  className="text-2xl font-light text-center">WOMEN</h1>
+      
       
       <ManuItems text="WOMEN" />
       <ManuItems text="MEN" />
