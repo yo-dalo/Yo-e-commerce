@@ -8,7 +8,7 @@ const HeroCategories = () => {
       <h1 className="text-2xl text-center"> Your Categories </h1>
    
       
-      <div className="grid grid-cols-2 gap-3 gap-y-5 py-10">
+      <div className="grid grid-cols-2 overflow-scroll gap-3 gap-y-5 py-10">
       
       
                 {

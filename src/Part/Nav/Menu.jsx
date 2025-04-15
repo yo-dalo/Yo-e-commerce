@@ -26,7 +26,7 @@ const Menu = forwardRef(({
         //scale:1,
        // height: "calc(100vh - 5rem)",
         display: "flex", 
-        duration: 1.5, 
+        duration: 1, 
         ease: "power4.inOut"
       });
     },
@@ -37,7 +37,7 @@ const Menu = forwardRef(({
       //  height: "0",
        y: "100vh",
        // scale:0,
-        duration: 0.5,
+        duration: 1,
         ease: "power4.inOut"
       });
     },
@@ -71,7 +71,7 @@ const toggleSubMenu = () => {
       <ManuItems onClick={toggleSubMenu} text="WOMEN" />
       <ManuItems text="KIDS" />
       
-     <SubMenu ref={subMenuRef} onClick={toggleSubMenu}  />
+     <SubMenu ref={subMenuRef} closeButton={toggleSubMenu}  />
    
    
     </div>

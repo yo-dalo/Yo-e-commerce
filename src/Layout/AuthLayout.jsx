@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 const AuthLayout = () => {
   return (
-    <div className="w-screen h-screen bg-white relative relative centre pt-3 z-[10]">
+    <div className="w-screen font-[Inter] h-screen bg-white relative relative centre pt-3 z-[10]">
 
       <div className="">
         <h1 className="text-4xl text-center">My account</h1>

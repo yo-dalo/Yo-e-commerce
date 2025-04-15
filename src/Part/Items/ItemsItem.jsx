@@ -1,6 +1,8 @@
 import React from 'react'
 import HeroCardImg from "../../Part/Hero/HeroCard/HeroCardImg"
 import HeroCardInfo from "../../Part/Hero/HeroCard/HeroCardInfo"
+
+
 import {
   Link,
   Outlet
@@ -11,6 +13,7 @@ const ItemsItem = ({img}) => {
         <Link to="/item" className="w-full border-y  block break-inside-avoid">
         <HeroCardImg className="h-auto  align-top" img={img} />
         <HeroCardInfo  />
+
       </Link>
   )
 }

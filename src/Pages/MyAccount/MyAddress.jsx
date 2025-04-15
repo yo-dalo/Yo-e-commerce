@@ -1,9 +1,11 @@
 import React from 'react'
+import DefaultAddressCard from '../../Part/MyAccount/DefaultAddressCard'
 
 const MyAddress = () => {
   return (
-    <div>
-      
+    <div className="ani">
+      <DefaultAddressCard />
+
     </div>
   )
 }

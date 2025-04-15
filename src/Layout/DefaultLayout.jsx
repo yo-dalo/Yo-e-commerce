@@ -37,14 +37,15 @@ const DefaultLayout = ({children}) => {
   
   
   return (
-          <div ref={containerRef} className="w-screen  font-[Inter] relative h-screen bg-amber-50">
+    <>
+
+          <div ref={containerRef} className="w-screen pointer-events-none# overflow-hidden# font-[Inter] relative h-screen bg-amber-50">
            <Nav ref={containerRef} />
-           
            <Outlet />
-           
            <MainFooter />
            <Footer />
           </div>
+    </>
   )
 }
 

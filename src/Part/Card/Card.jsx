@@ -73,7 +73,7 @@ const handleDeleteItem = (index) => (event) => {
         //opacity: 1,
         x: 0,
         display: "flex",
-        duration: 0.5,
+        duration: 1,
         ease: "power4.inOut"
       });
     },
@@ -82,7 +82,7 @@ const handleDeleteItem = (index) => (event) => {
         //  opacity: 0,
         display: "none",
         x: "100vw",
-        duration: 0.5,
+        duration: 1,
         ease: "power4.inOut"
       });
     },

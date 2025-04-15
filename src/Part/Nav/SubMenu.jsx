@@ -7,7 +7,7 @@ import gsap from "gsap";
 import ManuItems from "./ManuItems";
 
 const SubMenu = forwardRef(({
-  className,onClick
+  className,onClick,closeButton
 }, ref) => {
   const subMenuRef = useRef(null);
   
@@ -49,7 +49,17 @@ const SubMenu = forwardRef(({
       h-[calc(100vh-5rem)]1
       flex flex-col gap-9 ${className}`}
       >
+      <div className="flex jb" >
+            <div onClick={closeButton} className="scale-[1.2] p-2 rounded-full  rotate-180">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9 18l6-6-6-6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+      </div>
+      
+      
       <h1  className="text-2xl font-light text-center">WOMEN</h1>
+      </div>
+      
       
       
       <ManuItems text="WOMEN" />

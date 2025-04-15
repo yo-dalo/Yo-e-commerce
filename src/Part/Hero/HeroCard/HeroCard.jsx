@@ -10,7 +10,7 @@ import {
 
 const HeroCard = ({img}) => {
   return (
-        <Link to="/item" className="min-w-[80%] ">
+        <Link to="/items" className="min-w-[80%] ">
         <HeroCardImg img={img} />
         <HeroCardInfo  />
       </Link>

@@ -4,3 +4,19 @@
   font-style: normal;
   
 }
+
+
+.ani{
+  animation-name: identifier;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes identifier {
+  from { 
+ opacity: 0;
+   
+   
+  }
+  
+}
