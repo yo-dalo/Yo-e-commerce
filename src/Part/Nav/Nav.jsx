@@ -1,5 +1,6 @@
-import React, { useRef, useState,useEffect } from "react";
-
+import React, { useRef,forwardRef,useImperativeHandle, useState,useEffect } from "react";
+import {useUtility} from "../../Context/UtilityContext"
+import {useAuth} from "../../Context/AuthContext"
 
 
 import {
@@ -9,52 +10,74 @@ import {
 
 
 
+
 import Menu from "./Menu";
 import Card from "../Card/Card";
 
+
 import gsap from "gsap";
-const Nav = () => {
+const Nav = forwardRef(({
+  className
+}, ref) => {
+  
+  const {user} = useUtility()
+  const {login} = useAuth()
+  
+  
+  
   const menuRef = useRef(null);
   const cardRef = useRef(null);
   
-  useEffect(() => { 
-    gsap.to(".navBg",{
-      height: "5rem",
-      duration: 2,
-        ease: "power4.inOut"
-    })
-    gsap.to(".navSvgboder",{
-    
-      borderWidth:1,
-      borderColor: 'black',
-      
-      duration: 2,
-      ease: "power4.inOut",
-    })
-  })
+
   
   
   
   const menuButtonRef = useRef(null);
   const menuButtonSvgRef = useRef(null);
+  const navBgRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenCard, setIsOpenCard] = useState(false);
+  const [isOpenNavBg, setIsOpenNavBg] = useState(false);
 
 
 
+    const toggleNavBg = (isOpen=false)=>{
+  if (isOpen){
+  gsap.to(navBgRef.current, {
+      height: "5rem",
+      duration: 1,
+        ease: "power4.inOut"
+    },)
+  }else{
+  gsap.to(navBgRef.current, {
+      height: "0",
+     duration: 1,
+        ease: "power4.inOut"
+    },)
+  }
+}
 
 
 
   const toggleMenu = () => {
     if (isOpen) {
       menuRef.current?.closeMenu();
-      
+      setIsOpenNavBg(false)
     } else {
       menuRef.current?.openMenu();
+      setIsOpenNavBg(true)
     }
     setIsOpen(!isOpen);
   };
   
+  const toggleMenuButton = () => {
+  if (isOpen) {
+    animateToHamburger();
+  } else {
+    animateToCross("elastic"); // You can change this to "fadeTwist", "elastic", "rotate360", or leave default
+  }
+  setIsOpen(!isOpen);
+};
   
   
   
@@ -62,15 +85,14 @@ const Nav = () => {
   const toggleCard = () => {
     if (isOpenCard) {
       cardRef.current?.closeCard();
-      
-      
-      
+      setIsOpenNavBg(false)
     } else {
       cardRef.current?.openCard();
-      
+      setIsOpenNavBg(true);
     }
     setIsOpenCard(!isOpenCard);
   };
+  
   const toggleCardButton = () => {
     if (isOpenCard) {
       
@@ -109,7 +131,7 @@ const Nav = () => {
   };
   
   
-  const animateToCross = (style = "default") => {
+ const animateToCross = (style = "default") => {
   switch (style) {
     case "expand":
       gsap.to('.topLine', {
@@ -228,6 +250,8 @@ const Nav = () => {
       break;
   }
 
+    
+
   gsap.to(menuButtonRef.current, {
     backgroundColor: 'black',
     duration: 0.5,
@@ -265,7 +289,7 @@ const animateToHamburger = () => {
     transformOrigin: "center",
     ease: "power4.out"
   });
-
+  
   gsap.to(menuButtonRef.current, {
     backgroundColor: 'transparent',
     duration: 0.5,
@@ -282,33 +306,54 @@ const animateToHamburger = () => {
   
   
   
-  const toggleMenuButton = () => {
-  if (isOpen) {
-    animateToHamburger();
-  } else {
-    animateToCross("elastic"); // You can change this to "fadeTwist", "elastic", "rotate360", or leave default
+ useEffect(() => { 
+   
+  const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ref.current,
+        start: '100% center',
+        end: '+=500',
+        scrub: true,
+       // markers: true, // for debugging
+      },
+    });
+    tl.to(".navSvgboder",{
+      borderWidth:1,
+      borderColor: 'black',
+      duration: 2,
+      ease: "power4.inOut",
+    },"nav")
+    
+      tl.to(navBgRef.current, {
+      height: "5rem",
+      duration: 2,
+        ease: "power4.inOut"
+    },"nav")
+  
+    
+  }, [isOpenNavBg,setIsOpenNavBg]);
+ useEffect(() => { 
+  if(isOpenNavBg){
+    toggleNavBg(true)
+  }else{
+    toggleNavBg()
   }
-  setIsOpen(!isOpen);
-};
-
-
-  
-  
+  }, [isOpenNavBg,setIsOpenNavBg]);
   
 
   return (
-    <div className="fixed z-20  top-0 font-[Inter]">
+    <div  className="fixed z-50 pointer-events-auto top-0 font-[Inter]">
       <div className="flex  max-h-20 h-20  w-screen font-[Inter] items-center
        default_padding flex-row justify-between">
         
-      <div className=" navBg bg-white h-0 w-screen  -z-[10] absolute top-0 left-0 "></div>
+      <div ref={navBgRef} className=" navBg bg-white3 bg-[hsla(254.8,72.9%,67.1%,0.348)] backdrop-blur-lg h-0 w-screen  -z-[10] absolute top-0 left-0 "></div>
       
-        <h1  className="break-words font-extrabold text-3xl
-        tracking-[0.5rem]">UBAC</h1>
+        <Link to="/" className="break-words font-extrabold text-3xl
+        tracking-[0.5rem]">UBAC</Link>
 
         <div className="flex gap-3 flex-row">
           
-          <div className="navSvgboder p-4 rounded-full">
+          <Link to="/account" className="navSvgboder  rounded-full">
            
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
             width="24" height="24" fill="none" stroke="currentColor"
@@ -316,10 +361,10 @@ const animateToHamburger = () => {
               <circle cx="12" cy="8" r="4"></circle>
               <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
             </svg>
-          </div>
+          </Link>
           
-          <div onClick={()=> {toggleCard();toggleCardButton()}} className="
-          navSvgboder relative cardIcon p-4 rounded-full">
+          <div onClick={()=> {toggleCard();toggleCardButton(),login() }} className="
+          navSvgboder relative cardIcon  rounded-full">
             <div className="rounded-full   w-4 h-4 centre text-xs bg-black text-white absolute top-2 -right-1">5</div>
             {isOpenCard?
               <svg className="cardIconSvg" xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +387,7 @@ const animateToHamburger = () => {
           </div>
           
           <div ref={menuButtonRef} onClick={()=>{toggleMenu();toggleMenuButton()}}
-          className="navSvgboder p-4 rounded-full cursor-pointer">
+          className="navSvgboder rounded-full cursor-pointer">
 <svg ref={menuButtonSvgRef} xmlns="http://www.w3.org/2000/svg" 
   viewBox="0 0 24 24" width="24" height="24" 
   fill="none" stroke="currentColor" strokeWidth="2" 
@@ -364,6 +409,6 @@ const animateToHamburger = () => {
 
     </div>
   );
-};
+});
 
 export default Nav;

@@ -1,61 +1,77 @@
 import {
-  useState
-} from 'react'
-import {
   BrowserRouter as Router,
   Routes,
   Route
+  
 } from "react-router-dom";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useLocation} from "react-router-dom";
+import { useEffect, useState } from 'react';
+
 import './App.css'
-/////////
+
+// Layouts
 import DefaultLayout from './Layout/DefaultLayout'
 import AuthLayout from './Layout/AuthLayout'
+import AccountLayout from './Layout/AccountLayout'
 
-////////////
-import Nav from './Part/Nav/Nav'
+// Pages
 import Hero from './Pages/Hero/Hero'
-import Footer from './Part/Footer/Footer'
 import Login from './Pages/Auth/Login'
 import SignUp from './Pages/Auth/SignUp'
-///items 
 import Item from './Pages/Item/Item'
-
+import Items from './Pages/Items/Items'
+import CheckOut from './Pages/ChackOut/CheckOut'
+import MyAccount from './Pages/MyAccount/MyAccount'
+import MyInformation from './Pages/MyAccount/MyInformation'
+import MyAddress from './Pages/MyAccount/MyAddress'
+import MyOrder from './Pages/MyAccount/MyOrder'
+import AddAddressForm from './Pages/MyAccount/AddAddressForm'
+import TrackOrder from './Pages/MyAccount/TrackOrder'
 
 function App() {
-  const [count,
-    setCount] = useState(0)
-
+  
+   
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  
+  
   return (
-    <>
+    <Router>
+      <Routes>
+
+        {/* Public Routes using DefaultLayout */}
+        <Route path="/" element={<DefaultLayout />}>
+          <Route index element={<Hero />} />
+          <Route path="item" element={<Item />} />
+          <Route path="items" element={<Items />} />
+          <Route path="check-out" element={<CheckOut />} />
+
+        </Route>
+
+        {/* Auth Routes using AuthLayout */}
+        <Route path="/auth" element={<AuthLayout />}>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+        </Route>
 
 
-      <DefaultLayout>
-        <Router>
-          <Routes>
+        {/* Auth Routes using Account */}
+        <Route path="/account" element={<AccountLayout />
+          }>
 
+          <Route path="info" element={<MyInformation />} />
+          <Route path="address" element={<MyAddress />} />
+          <Route path="order" element={<MyOrder />} />
+          <Route path="add-address" element={<AddAddressForm />} />
+          <Route path="track-order" element={<TrackOrder />} />
 
-     <Route path="/" element={<Hero />} />
-     <Route path="/item" element={<Item />} />
-            
-        
+        </Route>
 
-
-   <Route path="/auth" element={<AuthLayout />}>
-      <Route path="signup" element={<SignUp />} />
-    <Route path="login" element={<Login />} />
-   </Route>
-
-
-
-
-
-
-          </Routes>
-        </Router>
-      </DefaultLayout>
-    </>
+      </Routes>
+    </Router>
   )
 }
 

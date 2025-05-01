@@ -1,14 +1,15 @@
 import React from 'react'
 import AuthInput from '../../Part/Auth/AuthInput'
+import Input from '../../Part/Utility/Input/Input'
 const SignUp = () => {
   return (
     
           <form>
-            <div className="centre px-7 py-10 flex-col gap-5">
+            <div className="centre px-7 py-10 flex-col gap-3">
               
-             <AuthInput placeholder="Enter your Name " />
-             <AuthInput  placeholder="Enter your Email" />
-             <AuthInput  placeholder="Enter your Phone" />
+             <Input placeholder="Enter your Name " />
+             <Input  placeholder="Enter your Email" />
+             <Input  placeholder="Enter your Phone" />
             
             
             

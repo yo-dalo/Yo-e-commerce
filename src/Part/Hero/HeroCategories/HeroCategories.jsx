@@ -8,16 +8,17 @@ const HeroCategories = () => {
       <h1 className="text-2xl text-center"> Your Categories </h1>
    
       
-      <div className="grid grid-cols-2 gap-3 gap-y-5 py-10">
+      <div className="grid grid-cols-2 overflow-scroll gap-3 gap-y-5 py-10">
       
       
+                {
+        [12,4,6,55,7].map((element,index)=>(
+        <HeroCategoriesElement key={index} />
+        ))
+      }
         
-        
       
-        <HeroCategoriesElement />
-        <HeroCategoriesElement />
-        <HeroCategoriesElement />
-        <HeroCategoriesElement />
+
       
       
         
