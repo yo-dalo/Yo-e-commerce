@@ -2,8 +2,8 @@ import { createContext, useContext, useState } from "react";
 
 const UtilityContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // or use token instead
+export const UtilityProvider = ({ children }) => {
+  const [user, setUser] = useState(5); // or use token instead
 
   const login = (userData) => {
     setUser(userData);
@@ -16,10 +16,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!user }}>
+    <UtilityContext.Provider value={{ user, login, logout, isAuthenticated: !!user }}>
       {children}
-    </AuthContext.Provider>
+    </UtilityContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(UtilityContext);
+export const useUtility = () => useContext(UtilityContext);

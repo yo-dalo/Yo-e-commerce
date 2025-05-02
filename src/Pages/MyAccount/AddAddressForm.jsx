@@ -2,7 +2,7 @@ import Input from '../../Part/Utility/Input/Input'
 
 const AddAddressForm = () => {
   return (
-    <div className="max-w-md ani mx-auto p-6 border rounded-md shadow-sm bg-white">
+    <div className="max-w-md ani mx-auto p-6 border rounded-md shadow-sm bg-white dark-bg">
       <h2 className="text-lg font-bold mb-4">ADD AN ADDRESS</h2>
 
       <form className="space-y-4 text-xl ">

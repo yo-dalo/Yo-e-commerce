@@ -26,7 +26,7 @@ const HeroPage_2 = () => {
       
       <div className="flex text-xl flex-row w-full">
              
-       <h1 className=" text-black py-4 border-b-2 border-black centre w-1/2 ">Women</h1>
+       <h1 className=" text-black py-4 border-b-2 border-black centre w-1/2 dark:text-gray-100 ">Women</h1>
        
        <h1 className=" text-gray-400 py-4 border-b-2 border-gray-400 centre
        w-1/2">Men</h1>

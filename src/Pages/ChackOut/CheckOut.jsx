@@ -14,9 +14,9 @@ import img from
 
 const CheckOut = () => {
   return (
-    <div className="page bg-white py-20 ">
+    <div className="page  dark-bg bg-white py-20 ">
       <div className="flex default_padding justify-between items-center
-        bg-gray-100 border-y h-16 ">
+        bg-gray-100 border-y h-16 dark:dbg ">
         <h3 className="text-green-900 text-sm">Résumé de la commande </h3>
         <h2 className="text-green-900 text-lg font-semibold ">258,00 €</h2>
 

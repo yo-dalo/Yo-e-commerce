@@ -27,6 +27,12 @@ import MyAddress from './Pages/MyAccount/MyAddress'
 import MyOrder from './Pages/MyAccount/MyOrder'
 import AddAddressForm from './Pages/MyAccount/AddAddressForm'
 import TrackOrder from './Pages/MyAccount/TrackOrder'
+import ProtecRoute from './Part/Utility/ProtecRoute'
+
+
+
+
+
 
 function App() {
   
@@ -44,8 +50,12 @@ function App() {
 
         {/* Public Routes using DefaultLayout */}
         <Route path="/" element={<DefaultLayout />}>
+          
           <Route index element={<Hero />} />
-          <Route path="item" element={<Item />} />
+
+          <Route path="item" element={ <Item />} />
+
+          
           <Route path="items" element={<Items />} />
           <Route path="check-out" element={<CheckOut />} />
 
@@ -59,7 +69,7 @@ function App() {
 
 
         {/* Auth Routes using Account */}
-        <Route path="/account" element={<AccountLayout />
+        <Route path="/account" element={ <ProtecRoute> <AccountLayout /> </ProtecRoute>
           }>
 
           <Route path="info" element={<MyInformation />} />

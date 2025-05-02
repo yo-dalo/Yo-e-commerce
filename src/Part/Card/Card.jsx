@@ -154,13 +154,19 @@ const handleDeleteItem = (index) => (event) => {
 </Swiper>
 
 
-
-
-
-
-
-
 <CardFooter />
+{/*<CardFooter />*/}
+
+
+<div className="">
+
+</div>
+
+
+
+
+
+
 
 
 

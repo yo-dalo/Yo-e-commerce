@@ -2,7 +2,7 @@ import React from 'react'
 
 const CardFooter = () => {
   return (
-    <div className="fixed1 w-full  bottom-24 md:bottom-0 left-0 h-[40vw]1 bg-blue-50">
+    <div className="fixed#  w-full  bottom-24# bottom-0 md:bottom-0 left-0 h-[40vw]1 bg-blue-50">
       <div className="px-2">
               <div className="flex flex-row justify-between px-5 items-center py-3">
                 <h1 className="font-semibold text-[1.4rem]">TOTAL</h1>

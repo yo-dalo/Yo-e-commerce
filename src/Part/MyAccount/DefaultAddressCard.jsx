@@ -6,7 +6,7 @@ import {
 
 const DefaultAddressCard = () => {
   return (
-    <div className="max-w-sm border rounded-md p-4 relative shadow-sm bg-white">
+    <div className="max-w-sm border rounded-md p-4 relative shadow-sm bg-white dark-bg">
       <h2 className="text-lg font-semibold mb-2">Adresse par défaut</h2>
       <p>Adarsh Adarsh</p>
       <p>My</p>

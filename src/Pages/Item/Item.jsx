@@ -15,7 +15,7 @@ const Item = () => {
   
   return (
    
-   <div class="font-[Inter] relative z-[10]">
+   <div class="font-[Inter] ani_1 relative z-[10]">
      <ItemPage_1 />
      <ItemPage_2 />
      <ItemPage_3 />

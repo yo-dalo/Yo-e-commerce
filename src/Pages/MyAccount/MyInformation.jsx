@@ -6,7 +6,7 @@ import ProfileInfo from '../../Part/MyAccount/ProfileInfo'
 
 const MyInformation = () => {
   return (
-    <div className="ani">
+    <div className="ani ">
       <ProfileInfo />
       <MyAccountButton text="Edit my information" />
       <MyAccountButton text="Edit my password" />

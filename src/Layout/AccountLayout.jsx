@@ -7,10 +7,10 @@ import {
 
 const AccountLayout = () => {
   return (
-       <div className="min-h-[100vh]  pt-28 pb-10 font-[Inter] bg-white">
+       <div className="min-h-[100vh]  pt-28 pb-10 font-[Inter] bg-white ">
       <div className="w-full gap-11 centre flex-col px-7   "> 
       
-       <div className="w-full px-4 bg-gray-100">
+       <div className="w-full px-4 bg-gray-100 ">
        <Link to="/account/order">
        <h1 className="text-2xl py-4 border-b border-black font-normal
        ">My Order</h1>
@@ -31,7 +31,7 @@ const AccountLayout = () => {
               </Link>
       
        
-       <div className="w-full mt-12 text-white centre bg-black h-14">
+       <div className="w-full mt-12 text-white centre bg-black h-14 dark-bg-l">
          Log out 
        </div>
        

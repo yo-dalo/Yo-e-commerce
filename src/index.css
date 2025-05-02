@@ -45,6 +45,25 @@ input{
   @apply duration-700
   
 }
+.dark-bg{
+  /*  dark background: ;*/
+  @apply dark:bg-black dark:text-white
+}
+.dark-bg-l{
+  /*  dark background: ;*/
+  @apply dark:bg-white dark:text-black
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* costume class */

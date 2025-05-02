@@ -22,7 +22,7 @@ const Items = () => {
   return (
     <>
     
-    <div className="page columns-2 md:columns-4 bg-white gap-1.5 ">
+    <div className="page columns-2 ani_1  md:columns-4 bg-white gap-1.5 ">
      
             {
         [img,img,img1,img1,img,img1,img,img1,img1,img,img1,].map((element,index)=>(

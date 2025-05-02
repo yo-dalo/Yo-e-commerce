@@ -1,4 +1,7 @@
 import React, { useRef,forwardRef,useImperativeHandle, useState,useEffect } from "react";
+import {useUtility} from "../../Context/UtilityContext"
+import {useAuth} from "../../Context/AuthContext"
+
 
 import {
   Link,
@@ -8,14 +11,20 @@ import {
 
 
 
-
 import Menu from "./Menu";
 import Card from "../Card/Card";
+
 
 import gsap from "gsap";
 const Nav = forwardRef(({
   className
 }, ref) => {
+  
+  //const {user} = useUtility()
+  const {login,user} = useAuth()
+  
+  
+  
   const menuRef = useRef(null);
   const cardRef = useRef(null);
   
@@ -334,13 +343,13 @@ const animateToHamburger = () => {
 
   return (
     <div  className="fixed z-50 pointer-events-auto top-0 font-[Inter]">
-      <div className="flex  max-h-20 h-20  w-screen font-[Inter] items-center
+      <div className="flex relative max-h-20 h-20  w-screen font-[Inter] items-center
        default_padding flex-row justify-between">
         
       <div ref={navBgRef} className=" navBg bg-white3 bg-[hsla(254.8,72.9%,67.1%,0.348)] backdrop-blur-lg h-0 w-screen  -z-[10] absolute top-0 left-0 "></div>
       
-        <Link to="/" className="break-words font-extrabold text-3xl
-        tracking-[0.5rem]">UBAC</Link>
+        <Link to="/" className="break-words  font-extrabold text-3xl
+        tracking-[0.5rem]">UBAC {user.name &&<span className="text-sm tracking-normal whitespace-nowrap line-clamp-none absolute  bottom-2 font-light">login by {user.name}</span>}</Link>
 
         <div className="flex gap-3 flex-row">
           
