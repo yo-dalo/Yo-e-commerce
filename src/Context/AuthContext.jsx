@@ -1,8 +1,14 @@
 import { createContext, useContext, useState,useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Yo from "../Part/Utility/Axios"
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+ const go = useNavigate();
+
+  
+  
   const [user, setUser] = useState({
     isLogin:false,
     name:"",
@@ -23,8 +29,10 @@ const isLogin= async()=>{
     phone:phone,
     email:email,
     id:id,
-      
     });
+    
+    
+    
   
   
 }
@@ -50,6 +58,9 @@ const isLogin= async()=>{
     id:id,
       
     });
+    go('/')
+    
+    
   };
 
   const logout = () => {

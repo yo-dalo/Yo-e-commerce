@@ -3,8 +3,10 @@ import AuthInput from '../../Part/Auth/AuthInput'
 import Input from '../../Part/Utility/Input/Input'
 import {useAuth} from "../../Context/AuthContext"
 import React, { useState,useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const go = useNavigate();
   const {login,user} = useAuth()
   const [data, setData] = useState({
     phoneOrEmail:"",
@@ -16,6 +18,10 @@ const Login = () => {
     
     setData({...data,[key]:value})
   }
+  
+  useEffect(()=>{
+    if(user.isLogin) go("/");
+  },[])
   
   
   

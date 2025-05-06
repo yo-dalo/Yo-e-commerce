@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { useLocation} from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { AuthProvider } from "./Context/AuthContext";
 
 import './App.css'
 
@@ -46,8 +47,8 @@ function App() {
   
   return (
     <Router>
+    <AuthProvider>
       <Routes>
-
         {/* Public Routes using DefaultLayout */}
         <Route path="/" element={<DefaultLayout />}>
           
@@ -79,8 +80,8 @@ function App() {
           <Route path="track-order" element={<TrackOrder />} />
 
         </Route>
-
       </Routes>
+    </AuthProvider>
     </Router>
   )
 }

@@ -35,18 +35,20 @@ const Card = forwardRef(({
 }, ref) => {
   
 const swiperRef = useRef(null);
-  const [slides, setSlides] = useState([1, 2, 3, 4, 5]);
+  const [slides, setSlides] = useState([1, 2, 3,,3,4,5,5,6,6,7,7,]);
+  
+  const removeSlides =()=>{
+    setSlides([1,2,4,5])
+  }
 
   const cardRef = useRef(null);
   const cardItemRefs = useRef([]);
 
   
-  useEffect(() => {
-    cardItemRefs.current = slides.map((_, i) => cardItemRefs.current[i] ?? React.createRef());
-  }, [slides]);
 
 
 const handleDeleteItem = (index) => (event) => {
+  
     event.stopPropagation();
     const targetRef = cardItemRefs.current[index];
 
@@ -88,6 +90,9 @@ const handleDeleteItem = (index) => (event) => {
     },
   }));
 
+  useEffect(() => {
+    cardItemRefs.current = slides.map((_, i) => cardItemRefs.current[i] ?? React.createRef());
+  }, [slides]);
 
 
 
@@ -134,7 +139,7 @@ const handleDeleteItem = (index) => (event) => {
       
       pagination={{ clickable: true }}
       
-       className="w-full flex-1
+       className="w-full flex-1 Rrrr
       h-[calc(100vh-5rem-18.5vw)] h-fullq overflow-scroll ">
   
 
