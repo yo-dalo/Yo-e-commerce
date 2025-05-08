@@ -1,22 +1,34 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const UtilityContext = createContext();
 
 export const UtilityProvider = ({ children }) => {
-  const [user, setUser] = useState(5); // or use token instead
+  const [isPhone, setIsPhone] = useState({
+    isPhone: null,
+    width: null,
+    height: null,
+  });
 
-  const login = (userData) => {
-    setUser(userData);
-    // optionally store token in localStorage/sessionStorage
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
 
-  const logout = () => {
-    setUser(null);
-    // remove token from storage if used
-  };
+      setIsPhone({
+        isPhone: width <= 600,
+        width,
+        height,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call immediately to set initial values
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <UtilityContext.Provider value={{ user, login, logout, isAuthenticated: !!user }}>
+    <UtilityContext.Provider value={{ isPhone }}>
       {children}
     </UtilityContext.Provider>
   );

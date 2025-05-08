@@ -6,8 +6,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import img from '../../Image/639d56af84d8d43fbc73f642_product-03.jpg';
+import Yo from '../../Part/Utility/Axios';
 
-import { useEffect, useRef } from 'react';
+import { useEffect,useState, useRef } from 'react';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,6 +19,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HeroPage_1 = () => {
        const poster= useRef(null);
+       
+      
   
   useEffect(() => {
   const tl = gsap.timeline();
@@ -27,6 +30,15 @@ const HeroPage_1 = () => {
     duration: "9",
     ease: "power3.out",
   });
+}, []);
+  useEffect(() => {
+    try {
+      Yo.get("/api/posters")
+    } catch (error) {
+      
+    }
+  
+
 }, []);
   
   

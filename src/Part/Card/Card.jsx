@@ -7,6 +7,9 @@ import React, {
 } from "react";
 import gsap from "gsap";
 
+import {useUtility} from '../../Context/UtilityContext'
+
+
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode,Scrollbar, A11y } from 'swiper/modules';
@@ -33,6 +36,8 @@ import img from
 const Card = forwardRef(({
   className
 }, ref) => {
+  
+  const {isPhone}  = useUtility()
   
 const swiperRef = useRef(null);
   const [slides, setSlides] = useState([1, 2, 3,,3,4,5,5,6,6,7,7,]);
@@ -105,6 +110,7 @@ const handleDeleteItem = (index) => (event) => {
         jstart flex-col ${className}`}
         >
 
+
        
       <CardHeader />
         {/*   
@@ -133,7 +139,18 @@ const handleDeleteItem = (index) => (event) => {
       direction="vertical"
       spaceBetween={0}
       onSwiper={(swiper) => (swiperRef.current = swiper)}
-      slidesPerView={1.13}
+     slidesPerView={1.13}
+     breakpoints={{
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 4.1,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      }}
      // navigation
       freeMode={true}
       
