@@ -8,12 +8,16 @@ import React, {
 import gsap from "gsap";
 import ManuItems from "./ManuItems";
 import SubMenu from "./SubMenu";
+import {useUtility} from '../../Context/UtilityContext'
+
 
 const Menu = forwardRef(({
   className
 }, ref) => {
   const menuRef = useRef(null);
   const subMenuRef = useRef(null);
+  const  {subCategoryData} = useUtility()
+
 
   const [isOpenSubMenu, setIsOpenSubMenu] = useState(false);
 
@@ -67,13 +71,11 @@ const toggleSubMenu = () => {
       className={`px-11 bg-white border-t-2 scale-1 relative z-10  translate-x-[100vw]1 translate-y-[100vh]  bg-white py-14 w-screen h-[calc(100vh-5rem)] flex  flex-col gap-9 ${className}`}
       >
       
-      <ManuItems text="MEN" />
-      <ManuItems onClick={toggleSubMenu} text="WOMEN" />
-      <ManuItems text="KIDS" />
-      
+      {subCategoryData?.map((element,index)=>(
+      <ManuItems onClick={toggleSubMenu} text={element?.name} />
+        ))}
+        
      <SubMenu ref={subMenuRef} closeButton={toggleSubMenu}  />
-   
-   
     </div>
   </>
 );

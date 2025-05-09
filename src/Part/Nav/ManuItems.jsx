@@ -1,6 +1,8 @@
 import React from 'react'
 
+
 const ManuItems = ({text,onClick}) => {
+
   return (
     <div  className="flex  flex-row justify-between items-center">
       <h1 className="text-xl font-semibold">{text}</h1>

@@ -19,7 +19,7 @@ const Footer = () => {
     
     
     <div className="text-9xl">
-     <h1 className="font-extrabold text-center">YO DALA </h1>
+     <h1 className="font-extrabold text-center">YO DALO </h1>
     </div>
     
     
