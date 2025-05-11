@@ -6,9 +6,15 @@ import React, {
 import gsap from "gsap";
 import ManuItems from "./ManuItems";
 
+import {useUtility} from '../../Context/UtilityContext'
+
+
+
+
 const SubMenu = forwardRef(({
-  className,onClick,closeButton
+  className,onClick,closeButton ,
 }, ref) => {
+    const  {yoData,getYoData} = useUtility()
   const subMenuRef = useRef(null);
   
    
@@ -17,7 +23,8 @@ const SubMenu = forwardRef(({
   
 
   useImperativeHandle(ref, () => ({
-    openSubMenu: () => {
+    openSubMenu: (id) => {
+      getYoData("sub_categories","/api/site/sub-categories/"+id)
       gsap.to(subMenuRef.current, {
         //opacity: 1, 
         x: 1, 
@@ -60,11 +67,16 @@ const SubMenu = forwardRef(({
       <h1  className="text-2xl font-light text-center">WOMEN</h1>
       </div>
       
+      {yoData?.sub_categories?.map((element,index)=>(
+      <ManuItems key={index} text={element.name} />
       
+      ))}
       
-      <ManuItems text="WOMEN" />
+{  /*    <ManuItems text="WOMEN" />
       <ManuItems text="MEN" />
       <ManuItems text="KIDS" />
+     */ }
+      
     </div>
   </>
 );

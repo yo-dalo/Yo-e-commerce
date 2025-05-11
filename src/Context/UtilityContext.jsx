@@ -11,6 +11,7 @@ export const UtilityProvider = ({ children }) => {
   });
   const [categoryData, setCategoryData] = useState([]);
   const [subCategoryData, setSubCategoryData] = useState([]);
+  const [yoData, setYoData] = useState({});
   
   useEffect(()=>{
     const getSubCategoryData = async ()=>{
@@ -23,6 +24,20 @@ export const UtilityProvider = ({ children }) => {
     }
     getSubCategoryData()
   },[])
+  
+    const getYoData = async (key,url,storeDataIn=[])=>{
+      try {
+       const res = await Yo.get(url)
+        setYoData((pre)=>({...pre,[key]:res?.data||storeDataIn}));
+      } catch (error) {
+        alert("getYoData")
+      }
+    }
+  useEffect(()=>{
+    getYoData("categories","/api/site/categories/")
+    getYoData("postersX","/api/site/posters/")
+  },[])
+  
   
 
   useEffect(() => {
@@ -44,7 +59,7 @@ export const UtilityProvider = ({ children }) => {
   }, []);
 
   return (
-    <UtilityContext.Provider value={{ isPhone , subCategoryData}}>
+    <UtilityContext.Provider value={{ isPhone , subCategoryData,yoData,getYoData}}>
       {children}
     </UtilityContext.Provider>
   );

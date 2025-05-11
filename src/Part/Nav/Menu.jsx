@@ -16,7 +16,7 @@ const Menu = forwardRef(({
 }, ref) => {
   const menuRef = useRef(null);
   const subMenuRef = useRef(null);
-  const  {subCategoryData} = useUtility()
+  const  {yoData} = useUtility()
 
 
   const [isOpenSubMenu, setIsOpenSubMenu] = useState(false);
@@ -49,16 +49,15 @@ const Menu = forwardRef(({
     }));
 
 
-const toggleSubMenu = () => {
-    if (isOpenSubMenu) {
-      subMenuRef.current?.openSubMenu();
-    
+const toggleSubMenu = (id) => {
       
+    if (isOpenSubMenu) {
+      subMenuRef.current?.openSubMenu(id);
     } else {
       subMenuRef.current?.closeSubMenu();
-      
     }
     setIsOpenSubMenu(!isOpenSubMenu);
+    
   };
 
 
@@ -71,11 +70,11 @@ const toggleSubMenu = () => {
       className={`px-11 bg-white border-t-2 scale-1 relative z-10  translate-x-[100vw]1 translate-y-[100vh]  bg-white py-14 w-screen h-[calc(100vh-5rem)] flex  flex-col gap-9 ${className}`}
       >
       
-      {subCategoryData?.map((element,index)=>(
-      <ManuItems onClick={toggleSubMenu} text={element?.name} />
+      {yoData?.categories?.map((element,index)=>(
+      <ManuItems onClick={()=>toggleSubMenu(element?.id)} text={element?.name} />
         ))}
         
-     <SubMenu ref={subMenuRef} closeButton={toggleSubMenu}  />
+     <SubMenu ref={subMenuRef}  closeButton={()=>toggleSubMenu(0)}  />
     </div>
   </>
 );

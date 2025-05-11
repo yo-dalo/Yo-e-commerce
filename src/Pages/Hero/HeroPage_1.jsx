@@ -11,34 +11,35 @@ import Yo from '../../Part/Utility/Axios';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {useUtility} from '../../Context/UtilityContext'
+
+
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroPage_1 = () => {
+  const  {yoData} = useUtility()
   const poster = useRef(null);
   const [posterData, setPosterData] = useState([]);
 
-  useEffect(() => {
-    const getPoster = async () => {
-      try {
-        const res = await Yo.get('/api/posters');
-        setPosterData(res?.data || []);
-      } catch (error) {
-        alert('err');
-      }
-    };
-    getPoster();
-  }, []);
+
 
   useEffect(() => {
-    if (!posterData.length) return;
+  // console.log(yoData.postersX);
+    
+  if (!posterData.length) return;
+
+
+
 
     gsap.from('.poster', {
       duration: 1,
       ease: 'power3.out',
       y: 100,
     });
-  }, [posterData]);
+  }, [yoData.postersX]);
 
   return (
     <div className="w-screen h-screen bg-gray-200">
@@ -51,13 +52,13 @@ const HeroPage_1 = () => {
         onSwiper={(swiper) => console.log('swip')}
         className="w-screen h-full centre flex- bg-gray-100"
       >
-        {posterData?.map((element, index) => (
+        {yoData?.postersX?.map((element, index) => (
           <SwiperSlide key={index} className="w-full relative h-full">
             <div className=" poster  fixed  top-40 rotate-90 -left-3 text-black z-40">
               <h2 className="text-xl font-medium">{element?.heading}ULTRA WATERPROOF </h2>
               <h1 className="text-2xl font-bold">{element?.title}AXOLO R-SKIN©</h1>
             </div>
-            <img className="object-cover" src={img} alt={`poster-${index}`} />
+            <img className="object-cover" src={"/uploads/"+element.img} alt={`poster-${index}`} />
           </SwiperSlide>
         ))}
       </Swiper>

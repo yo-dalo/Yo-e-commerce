@@ -50,13 +50,12 @@ function App() {
     <AuthProvider>
       <Routes>
         {/* Public Routes using DefaultLayout */}
+          <Route path="*" element={"not rout foun"} />
+          
         <Route path="/" element={<DefaultLayout />}>
-          
+    
           <Route index element={<Hero />} />
-
           <Route path="item" element={ <Item />} />
-
-          
           <Route path="items" element={<Items />} />
           <Route path="check-out" element={<CheckOut />} />
 
