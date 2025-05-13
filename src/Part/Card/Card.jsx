@@ -106,7 +106,7 @@ const handleDeleteItem = (index) => (event) => {
     <>
       <div
         ref={cardRef} style={ { display: "none", }}
-        className={`translate-x-[100vw] border-t-2 relative z-[40] bg-white  w-screen h-[calc(100vh-5rem)]
+        className={`translate-x-[100vw] border-t-2 fixed z-30 bg-white  w-screen h-[calc(100vh-5rem)]
         jstart flex-col ${className}`}
         >
 

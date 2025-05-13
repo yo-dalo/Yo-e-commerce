@@ -67,7 +67,7 @@ const toggleSubMenu = (id) => {
      
     <div
       ref={menuRef} style={{display:"none",}}
-      className={`px-11 bg-white border-t-2 scale-1 relative z-10  translate-x-[100vw]1 translate-y-[100vh]  bg-white py-14 w-screen h-[calc(100vh-5rem)] flex  flex-col gap-9 ${className}`}
+      className={`px-11 bg-white border-t-2 scale-1 fixed z-40  translate-x-[100vw]1 translate-y-[100vh]  bg-white py-14 w-screen h-[calc(100vh-5rem)] flex  flex-col gap-9 ${className}`}
       >
       
       {yoData?.categories?.map((element,index)=>(

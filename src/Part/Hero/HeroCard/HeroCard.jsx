@@ -8,11 +8,11 @@ import {
   Outlet
 } from "react-router-dom";
 
-const HeroCard = ({img}) => {
+const HeroCard = ({img,imgClassName,infoClassName}) => {
   return (
-        <Link to="/items" className="min-w-[80%] ">
-        <HeroCardImg img={img} />
-        <HeroCardInfo  />
+        <Link to="/items" className="min-w-[80%]">
+        <HeroCardImg className={imgClassName} img={img} />
+        <HeroCardInfo className={infoClassName} />
       </Link>
     
   )

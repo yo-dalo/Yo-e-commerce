@@ -20,7 +20,7 @@ const Nav = forwardRef(({
   className
 }, ref) => {
   
-  //const {user} = useUtility()
+  const {navConf} = useUtility()
   const {login,user} = useAuth()
   
   
@@ -342,7 +342,7 @@ const animateToHamburger = () => {
   
 
   return (
-    <div  className="fixed z-50 pointer-events-auto top-0 font-[Inter]">
+    <div style={navConf} className=" z-50 pointer-events-auto top-0 font-[Inter]">
       <div className="flex relative max-h-20 h-20  w-screen font-[Inter] items-center
        default_padding flex-row justify-between">
         

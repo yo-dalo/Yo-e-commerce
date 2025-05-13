@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="w-screen py-16  sticky bottom-0 z-1 text-white font-[Inter]  bg-black ">
+    <div className="w-screen py-16   sticky bottom-0 -z-1 text-white font-[Inter]  bg-black  ">
     
     <div className="flex-col py-16 centre gap-7" >
       <h3 className="text-sm font-bold">SIGN UP FOR GUCCI UPDATES</h3>

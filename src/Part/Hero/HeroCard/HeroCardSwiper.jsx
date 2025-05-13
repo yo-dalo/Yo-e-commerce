@@ -14,15 +14,12 @@ import HeroCard from "./HeroCard"
 
 
 
-const HeroCardSwiper = () => {
-  
+const HeroCardSwiper = ({spaceBetween,slidesPerView,imgClassName,infoClassName}) => {
   const {isPhone} = useUtility()
-  
-  
   return (
    <Swiper modules={[Navigation,FreeMode, Pagination, Scrollbar, A11y]}
-      spaceBetween={10}
-      slidesPerView={1.2}
+      spaceBetween={spaceBetween}
+      slidesPerView={slidesPerView}
       navigation={!isPhone?.isPhone}
       freeMode={true}
      /* pagination={{ clickable: true }}*/
@@ -32,7 +29,7 @@ const HeroCardSwiper = () => {
         {
         [12,4,6,5,6,7,8,9].map((element,index)=>(
         <SwiperSlide>
-          <HeroCard key={element} img={img_1} />
+          <HeroCard imgClassName={imgClassName} infoClassName={infoClassName} key={element}  img={img_1} />
         </SwiperSlide>
 
         ))

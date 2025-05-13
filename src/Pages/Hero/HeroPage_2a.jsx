@@ -21,22 +21,23 @@ import {useUtility} from "../../Context/UtilityContext"
 import HeroCardSwiper from "../../Part/Hero/HeroCard/HeroCardSwiper.jsx"
 
 
-const HeroPage_2 = ({option1,option2,onClick1,onClick2}) => {
+const HeroPage_2a = ({option1,option2}) => {
   const {isPhone}=  useUtility();
   
   return (
-   <div className="min-h-screen w-screen   centre flex-col gap-3
+   <div className=" w-screen mb-12  centre flex-col gap-3
    default_padding ">
+      
       <div className="flex text-xl flex-row  overflow-scroll w-full">
              
-       <h1 onClick={onClick1} className=" text-black py-4 border-b-2 border-black centre min-w-[50%]  w-1/2 dark:text-gray-100 ">{option1}</h1>
+       <h1 className=" text-black py-4 border-b-2 border-black centre min-w-[50%]  w-1/2 dark:text-gray-100 ">{option1}</h1>
 
-       <h1 onClick={onClick2} className=" text-gray-400 py-4 border-b-2 border-gray-400 centre
+       <h1 className=" text-gray-400 py-4 border-b-2 border-gray-400 centre
        w-1/2">{option2}</h1>
       </div>
-      <HeroCardSwiper  spaceBetween={10} slidesPerView={1.2} />
+      <HeroCardSwiper imgClassName="h-[35.1vh]" infoClassName="text-sm" spaceBetween={5} slidesPerView={2.2} />
     </div>
   )
 }
 
-export default HeroPage_2
+export default HeroPage_2a

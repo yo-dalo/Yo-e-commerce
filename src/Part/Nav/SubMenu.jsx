@@ -24,7 +24,7 @@ const SubMenu = forwardRef(({
 
   useImperativeHandle(ref, () => ({
     openSubMenu: (id) => {
-      getYoData("sub_categories","/api/site/sub-categories/"+id)
+      getYoData("sub_categories","/api/site/sub-categories/"+id,{})
       gsap.to(subMenuRef.current, {
         //opacity: 1, 
         x: 1, 
