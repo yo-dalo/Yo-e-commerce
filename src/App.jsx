@@ -8,6 +8,8 @@ import { useLocation} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { AuthProvider } from "./Context/AuthContext";
 
+import eruda from "eruda"; 
+
 import './App.css'
 
 // Layouts
@@ -40,6 +42,7 @@ function App() {
    
   
   useEffect(() => {
+    eruda.init();
     window.scrollTo(0, 0);
   }, []);
   
