@@ -14,7 +14,7 @@ import HeroCard from "./HeroCard"
 
 
 
-const HeroCardSwiper = ({spaceBetween,slidesPerView,imgClassName,infoClassName}) => {
+const HeroCardSwiper = ({spaceBetween,slidesPerView,imgClassName,infoClassName,data}) => {
   const {isPhone} = useUtility()
   return (
    <Swiper modules={[Navigation,FreeMode, Pagination, Scrollbar, A11y]}
@@ -27,9 +27,9 @@ const HeroCardSwiper = ({spaceBetween,slidesPerView,imgClassName,infoClassName})
       
       onSwiper={(swiper) => console.log(swiper)} className="w-full gap-4 flex overflow-scroll">
         {
-        [12,4,6,5,6,7,8,9].map((element,index)=>(
-        <SwiperSlide>
-          <HeroCard imgClassName={imgClassName} infoClassName={infoClassName} key={element}  img={img_1} />
+        data?.map((element,index)=>(
+        <SwiperSlide key={index}>
+          <HeroCard imgClassName={imgClassName} infoClassName={infoClassName}  name={element?.item_name} category={element.category_name} price={element.price} img={element.img} />
         </SwiperSlide>
 
         ))

@@ -6,6 +6,7 @@ import img2 from '../../Image/Items/DSC09648_8895a057-1ca8-4385-9b43-7241a83fbec
 import Input from '../../Part/Utility/Input/Input'
 import { useEffect, useState } from 'react';
 import {useUtility} from "../../Context/UtilityContext"
+import Yo from "../../Part/Utility/Axios"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode,Scrollbar, A11y } from 'swiper/modules';
@@ -18,12 +19,37 @@ import 'swiper/css/free-mode'; //Card.jsx
 
 const Items = () => {
   const {setNavConf} = useUtility()
+    const [itemData, setItemData] = useState([]);
+
+  
   
   useEffect(() => {
     window.scrollTo(0, 0);
    // setNavConf((pre)=>({...pre,position:"relative"}))
-    
   }, []);
+  useEffect(() => {
+    const getItems = async ()=>{
+            try {
+     const res = await Yo.get('/src/TestData/DamoDataItem.json');
+   //  console.log(res.message);
+     setItemData(res.message)
+    } catch (error) {
+      console.log(error);
+    }
+    }
+    
+    getItems()
+  }, []);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   return (
     <>
@@ -54,9 +80,9 @@ const Items = () => {
     
     <div className="page   columns-2 ani_1   md:columns-4 bg-white gap-1.5 ">
             {
-        [img,img,img2,img2,img2,img1,img1,img,img1,img,img1,img1,img,img1,].map((element,index)=>(
+       itemData?.map((element,index)=>(
        
-     <ItemsItem key={index} img={element} />
+     <ItemsItem key={index} img={element.img} name={element.item_name} category={element.category_name} price={element.price}  />
 
         ))
       }

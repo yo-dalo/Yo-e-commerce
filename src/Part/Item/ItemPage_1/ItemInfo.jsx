@@ -1,11 +1,11 @@
 import React from 'react'
 
-const ItemInfo = () => {
+const ItemInfo = ({name,}) => {
   return (
     <div className="w-full font-semibold  pt-5 flex flex-col
     gap-1 text-black  bg-white">
       
-      <h1 className="text-2xl font-semibold">VOLA SNEAKERS</h1>
+      <h1 className="text-2xl font-semibold">{name}</h1>
      <h2 className="text-gray-400">Vert Arctic</h2>
      <h2 className="text-sm gap-0.5  jstart flex-row font-medium ">
        {

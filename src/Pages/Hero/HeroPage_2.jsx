@@ -22,7 +22,7 @@ import HeroCardSwiper from "../../Part/Hero/HeroCard/HeroCardSwiper.jsx"
 
 
 const HeroPage_2 = ({option1,option2,onClick1,onClick2}) => {
-  const {isPhone}=  useUtility();
+  const {isPhone,yoData}=  useUtility();
   
   return (
    <div className="min-h-screen w-screen   centre flex-col gap-3
@@ -34,7 +34,7 @@ const HeroPage_2 = ({option1,option2,onClick1,onClick2}) => {
        <h1 onClick={onClick2} className=" text-gray-400 py-4 border-b-2 border-gray-400 centre
        w-1/2">{option2}</h1>
       </div>
-      <HeroCardSwiper  spaceBetween={10} slidesPerView={1.2} />
+      <HeroCardSwiper data={yoData?.tranding} spaceBetween={10} slidesPerView={1.2} />
     </div>
   )
 }

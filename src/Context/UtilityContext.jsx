@@ -44,6 +44,10 @@ export const UtilityProvider = ({ children }) => {
   useEffect(()=>{
     getYoData("categories","/api/site/categories/")
     getYoData("postersX","/api/site/posters/")
+    getYoData("tranding","../../src/TestData/Tranding.json")
+    getYoData("bast_saller","../../src/TestData/Tranding.json")
+    getYoData("dulex","../../src/TestData/Tranding.json")
+    
   },[])
   
   

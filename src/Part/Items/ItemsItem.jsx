@@ -8,11 +8,11 @@ import {
   Outlet
 } from "react-router-dom";
 
-const ItemsItem = ({img}) => {
+const ItemsItem = ({img,name,category,price}) => {
   return (
         <Link to="/item" className="w-full border-y  block break-inside-avoid">
         <HeroCardImg className="h-auto  align-top" img={img} />
-        <HeroCardInfo  />
+        <HeroCardInfo name={name} category={category} price={price} />
 
       </Link>
   )

@@ -31,6 +31,7 @@ import MyOrder from './Pages/MyAccount/MyOrder'
 import AddAddressForm from './Pages/MyAccount/AddAddressForm'
 import TrackOrder from './Pages/MyAccount/TrackOrder'
 import ProtecRoute from './Part/Utility/ProtecRoute'
+import ItemDisplay from './TestComponent/Test2/ProductCard'
 
 
 
@@ -61,6 +62,7 @@ function App() {
           <Route path="item" element={ <Item />} />
           <Route path="items" element={<Items />} />
           <Route path="check-out" element={<CheckOut />} />
+          <Route path="test" element={<ItemDisplay />} />
 
         </Route>
 

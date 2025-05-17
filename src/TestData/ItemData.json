@@ -1,0 +1,33 @@
+{
+  "message":{
+    "img":["/src/Image/Items/DSC09648_8895a057-1ca8-4385-9b43-7241a83fbec1.png","/src/Image/Items/DSC09648_8895a057-1ca8-4385-9b43-7241a83fbec1.png"],
+    "name":"VOLA SNEAKERS",
+    "category_name":"t-shart",
+    "subcategory_name":"Vert Arctic",
+    "price":"129.00€",
+    "variants": [
+    {
+      "id": 456,
+      "size": "S",
+      "color": "pink",
+      "price": 19.99,
+      "stock": 10
+    },
+    {
+      "id": 4516,
+      "size": "S",
+      "color": "green",
+      "price": 192.99,
+      "stock": 10
+    },
+    {
+      "id": 457,
+      "size": "M",
+      "color": "Red",
+      "price": 21.99,
+      "stock": 5
+    }
+
+  ]
+  }
+}

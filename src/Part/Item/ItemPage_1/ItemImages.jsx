@@ -11,9 +11,9 @@ import 'swiper/css/pagination';
 
 
 
-import img from
-'../../../Image/Items/8f1847c9-3855-4dec-af78-e8105b026390_PACH+SHOT+VOLA+CIEL+ET+VISO+(8).jpeg'
-const ItemImages = () => {
+// import img from
+// '../../../Image/Items/8f1847c9-3855-4dec-af78-e8105b026390_PACH+SHOT+VOLA+CIEL+ET+VISO+(8).jpeg'
+const ItemImages = ({imgs}) => {
   return (
     <Swiper
     modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -25,20 +25,17 @@ const ItemImages = () => {
       onSwiper={(swiper) => console.log(swiper)}
       
     className="w-screen h-[100vw] centre flex- bg-gray-100">
-      <SwiperSlide className="w-full h-full">
-        <img className="object-contain" src={img} />
-      </SwiperSlide>
-      <SwiperSlide className="w-full h-full">
-        <img className="object-contain" src={img} />
-      </SwiperSlide>
-      <SwiperSlide className="w-full h-full">
-        <img className="object-contain" src={img} />
-      </SwiperSlide>
-      <SwiperSlide className="w-full h-full">
+    
+    {imgs?.map((img,index)=>(
+      
+      <SwiperSlide key={index} className="w-full h-full">
         <img className="object-contain" src={img} />
       </SwiperSlide>
       
       
+      ))}
+    
+  
       
       
       

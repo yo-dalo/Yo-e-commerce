@@ -21,7 +21,7 @@ import {useUtility} from "../../Context/UtilityContext"
 import HeroCardSwiper from "../../Part/Hero/HeroCard/HeroCardSwiper.jsx"
 
 
-const HeroPage_2a = ({option1,option2}) => {
+const HeroPage_2a = ({option1,option2,data}) => {
   const {isPhone}=  useUtility();
   
   return (
@@ -35,7 +35,7 @@ const HeroPage_2a = ({option1,option2}) => {
        <h1 className=" text-gray-400 py-4 border-b-2 border-gray-400 centre
        w-1/2">{option2}</h1>
       </div>
-      <HeroCardSwiper imgClassName="h-[35.1vh]" infoClassName="text-sm" spaceBetween={5} slidesPerView={2.2} />
+      <HeroCardSwiper data={data} imgClassName="!h-[35.1vh]" infoClassName="text-sm" spaceBetween={5} slidesPerView={2.2} />
     </div>
   )
 }

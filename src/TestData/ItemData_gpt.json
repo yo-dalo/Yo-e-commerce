@@ -1,0 +1,22 @@
+{
+  "id": 123,
+  "name": "Example T-Shirt",
+  "description": "A comfortable cotton t-shirt",
+  "variants": [
+    {
+      "id": 456,
+      "size": "S",
+      "color": "pink",
+      "price": 19.99,
+      "stock": 10
+    },
+    {
+      "id": 457,
+      "size": "M",
+      "color": "Red",
+      "price": 21.99,
+      "stock": 5
+    }
+
+  ]
+}

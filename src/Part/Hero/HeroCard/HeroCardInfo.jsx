@@ -1,6 +1,6 @@
 import React,{useState}from 'react'
 
-const HeroCardInfo = ({className}) => {
+const HeroCardInfo = ({className,name,category,price}) => {
   
 const [info , setInfo] = useState({
   name:"VALA VERT-ARCTIC",
@@ -11,9 +11,9 @@ const [info , setInfo] = useState({
 
   return (
      <div  className={`w-full flex flex-col p-3 ${className}`}>
-          <h1 className="font-semibold">VALA VERT-ARCTIC</h1>
-          <h3 className="text-sm text-gray-300">Recycled wool</h3>
-          <h2 className="font-semibold">129.00 €</h2>
+          <h1 className="font-semibold">{name}</h1>
+          <h3 className="text-sm  text-gray-300">{category}</h3>
+          <h2 className="font-semibold">{price}</h2>
         </div>
   )
 }
