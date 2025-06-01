@@ -5,27 +5,40 @@ import ItemColor from '../../Part/Item/ItemPage_1/ItemColor'
 import ItemSize from '../../Part/Item/ItemPage_1/ItemSize'
 import ItemAddToCard from '../../Part/Item/ItemPage_1/ItemAddToCard'
 
-
-
-
-const ItemPage_1 = ({data,sizes,colors}) => {
+const ItemPage_1 = ({
+  data,
+  sizes,
+  colors,
+  selectedColor,
+  selectedSize,
+  selectedVariant,
+  onColorSelect,
+  onSizeSelect
+}) => {
   return (
-    <div className="w-screen min-h-screen h-screen1 text-white min-h-screen
-    bg-gray-50 page pb-7">
+    <div className="w-screen min-h-screen h-screen1 text-white min-h-screen bg-gray-50 page pb-7">
+      <ItemImages imgs={data?.img} />
       
-        <ItemImages  imgs={data?.img} />
-        
-        <div className="w-full default_padding ">
-        <ItemInfo name={data?.name} />
-        <ItemSize  sizes={sizes} />
-        <ItemColor data={data} colors={colors} />
-        <ItemAddToCard />
-      
-        </div>
-      
-      
-      
-      
+      <div className="w-full default_padding">
+        <ItemInfo 
+          name={data?.name} 
+          price={selectedVariant?.price || data?.basePrice} 
+        />
+        <ItemColor 
+          colors={colors} 
+          selectedColor={selectedColor}
+          onColorSelect={onColorSelect}
+        />
+        <ItemSize 
+          sizes={sizes} 
+          selectedSize={selectedSize}
+          onSizeSelect={onSizeSelect}
+        />
+        <ItemAddToCard 
+          variantId={selectedVariant?.id} 
+          isAvailable={!!selectedVariant}
+        />
+      </div>
     </div>
   )
 }

@@ -21,7 +21,7 @@ import {useUtility} from "../../Context/UtilityContext"
 import HeroCardSwiper from "../../Part/Hero/HeroCard/HeroCardSwiper.jsx"
 
 
-const HeroPage_2a = ({option1,option2,data}) => {
+const HeroPage_2a = ({option1,option2,data,onClick1,onClick2}) => {
   const {isPhone}=  useUtility();
   
   return (
@@ -30,9 +30,9 @@ const HeroPage_2a = ({option1,option2,data}) => {
       
       <div className="flex text-xl flex-row  overflow-scroll w-full">
              
-       <h1 className=" text-black py-4 border-b-2 border-black centre min-w-[50%]  w-1/2 dark:text-gray-100 ">{option1}</h1>
+       <h1 onClick={onClick1} className=" text-black py-4 border-b-2 border-black centre min-w-[50%]  w-1/2 dark:text-gray-100 ">{option1}</h1>
 
-       <h1 className=" text-gray-400 py-4 border-b-2 border-gray-400 centre
+       <h1 onClick={onClick2} className=" text-gray-400 py-4 border-b-2 border-gray-400 centre
        w-1/2">{option2}</h1>
       </div>
       <HeroCardSwiper data={data} imgClassName="!h-[35.1vh]" infoClassName="text-sm" spaceBetween={5} slidesPerView={2.2} />

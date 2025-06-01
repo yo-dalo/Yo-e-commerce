@@ -1,23 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 
-const ItemSize = ({ sizes = [] }) => {
-    const [selectedSize, setSelectedSize] = useState(null);
-  
+const ItemSize = ({ sizes = [], selectedSize, onSizeSelect }) => {
     const handleSizeChange = (size) => {
-        // Agar already selected size par click kiya to uncheck karo
-        if (selectedSize === size) {
-            setSelectedSize(null);
-        } 
-        // Nahi to naya size select karo
-        else {
-            setSelectedSize(size);
-        }
+        onSizeSelect(size === selectedSize ? '' : size);
     }
-  
-    useEffect(() => {
-        console.log("Selected Size:", selectedSize);
-    }, [selectedSize]);
   
     return (
         <div className="w-full font-semibold flex flex-col gap-3 text-black py-2 bg-white">

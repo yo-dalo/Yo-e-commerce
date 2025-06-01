@@ -1,83 +1,84 @@
-
 import React, {
   forwardRef,
   useState,
   useImperativeHandle,
-  useRef
+  useRef,
+  useMemo,
 } from "react";
 import gsap from "gsap";
 import ManuItems from "./ManuItems";
 import SubMenu from "./SubMenu";
-import {useUtility} from '../../Context/UtilityContext'
+import { useUtility } from '../../Context/UtilityContext';
 
-
-const Menu = forwardRef(({
-  className
-}, ref) => {
+const Menu = forwardRef(({ className }, ref) => {
   const menuRef = useRef(null);
   const subMenuRef = useRef(null);
-  const  {yoData} = useUtility()
-
-
-  const [isOpenSubMenu, setIsOpenSubMenu] = useState(false);
-
+  const { yoData } = useUtility();
+  const [activeSubMenuId, setActiveSubMenuId] = useState(null);
 
   useImperativeHandle(ref, () => ({
     openMenu: () => {
       gsap.to(menuRef.current, {
-        //opacity: 1, 
-        y: 0, 
-        //scale:1,
-       // height: "calc(100vh - 5rem)",
-        display: "flex", 
-        duration: 1, 
+        y: 0,
+        display: "flex",
+        duration: 1,
         ease: "power4.inOut"
       });
     },
     closeMenu: () => {
       gsap.to(menuRef.current, {
-      //  opacity: 0, 
         display: "none",
-      //  height: "0",
-       y: "100vh",
-       // scale:0,
+        y: "100vh",
         duration: 1,
-        ease: "power4.inOut"
+        ease: "power4.inOut",
+        onComplete: () => {
+          // Reset submenu when closing main menu
+          setActiveSubMenuId(null);
+          subMenuRef.current?.closeSubMenu();
+        }
       });
     },
-    
-    }));
+  }));
 
-
-const toggleSubMenu = (id) => {
-      
-    if (isOpenSubMenu) {
-      subMenuRef.current?.openSubMenu(id);
-    } else {
+  const toggleSubMenu = (id) => {
+    if (activeSubMenuId === id) {
+      // Close if clicking the same item
       subMenuRef.current?.closeSubMenu();
+      setActiveSubMenuId(null);
+    } else {
+      // Open new submenu
+      subMenuRef.current?.openSubMenu(id);
+      setActiveSubMenuId(id);
     }
-    setIsOpenSubMenu(!isOpenSubMenu);
-    
   };
 
-
+  const menuItems = useMemo(() => (
+    yoData?.categories?.map((element) => (
+      <ManuItems 
+        key={element?.id} 
+        onClick={() => toggleSubMenu(element.id)} 
+        text={element?.name}
+        isActive={activeSubMenuId === element.id}
+      />
+    ))
+  ), [yoData?.categories, activeSubMenuId]);
 
   return (
-    <>
-     
     <div
-      ref={menuRef} style={{display:"none",}}
-      className={`px-11 bg-white border-t-2 scale-1 fixed z-40  translate-x-[100vw]1 translate-y-[100vh]  bg-white py-14 w-screen h-[calc(100vh-5rem)] flex  flex-col gap-9 ${className}`}
-      >
-      
-      {yoData?.categories?.map((element,index)=>(
-      <ManuItems onClick={()=>toggleSubMenu(element?.id)} text={element?.name} />
-        ))}
-        
-     <SubMenu ref={subMenuRef}  closeButton={()=>toggleSubMenu(0)}  />
+      ref={menuRef}
+      style={{ display: "none" }}
+      className={`px-11 bg-white border-t-2 fixed z-40 py-14 w-screen h-[calc(100vh-5rem)] flex flex-col gap-9 ${className}`}
+    >
+      {menuItems}
+      <SubMenu 
+        ref={subMenuRef}  
+        closeButton={() => {
+          setActiveSubMenuId(null);
+          subMenuRef.current?.closeSubMenu();
+        }}  
+      />
     </div>
-  </>
-);
+  );
 });
 
 export default Menu;
